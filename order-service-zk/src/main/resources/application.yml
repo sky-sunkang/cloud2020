@@ -1,0 +1,11 @@
+# zookeeper版订单服务
+# zookeeper在192.168.142.102机器上用docker启动的【版本需要和pom一致】：
+# docker run --privileged=true -d --name zookeeper --publish 2181:2181 -e ZOO_SERVERS='server.1=0.0.0.0:2181'  -d zookeeper:3.4.11
+server:
+  port: 80
+spring:
+  cloud:
+    zookeeper:
+      connect-string: 192.168.142.102:2181
+  application:
+     name: order-service-zk

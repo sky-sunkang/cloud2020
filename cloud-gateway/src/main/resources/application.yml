@@ -1,0 +1,34 @@
+server:
+  port: 9527
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:kang@localhost:7001/eureka
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    instance-id: gateway9527 #实例名
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 30 #心跳时间
+    lease-expiration-duration-in-seconds: 90 #发呆时间
+spring:
+  application:
+    name: cloud-getway
+  cloud:
+    gateway:
+#      配置路由，可代码配置
+      routes:
+        - id: payment-service
+#          lb会负载，轮询
+          uri: lb://playment-service
+          predicates:
+            - Path=/paymentapi/**
+#            访问服务地址截取掉paymentapi
+          filters:
+            - StripPrefix=1
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/orderapi/**
+          filters:
+            - StripPrefix=1

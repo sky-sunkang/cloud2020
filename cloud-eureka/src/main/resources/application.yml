@@ -1,0 +1,29 @@
+server:
+  port: 7001
+spring:
+  application:
+    name: eureka
+  security:
+    user:
+      name: user
+      password: kang
+eureka:
+  client:
+    fetch-registry: false #不抓取注册表信息
+    register-with-eureka: false #服务端，不用注册自己
+    service-url:
+     # 单机版
+      defaultZone: http://${user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/${spring.application.name}
+      # 集群版  指向集群其他service机器
+      #defaultZone: http://${user.name}:${spring.security.user.password}@eureka7002.com:7002/eureka
+  instance:
+    lease-renewal-interval-in-seconds: 30 #心跳时间
+    lease-expiration-duration-in-seconds: 90 #发呆时间
+    hostname: localhost
+  server:
+    #关闭自我保护
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 20
+# 集群模式在本地host模拟两个机器相互注册，相互守望
+#127.0.0.1  eureka7001.com
+#127.0.0.1  eureka7002.com

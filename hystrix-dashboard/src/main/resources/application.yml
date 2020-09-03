@@ -1,0 +1,3 @@
+#访问地址http://localhost:9001/hystrix/monitor?stream=http%3A%2F%2Flocalhost%3A9002%2Fturbine.stream
+server:
+  port: 9001

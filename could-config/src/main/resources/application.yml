@@ -1,0 +1,24 @@
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          password: kang13597567953
+          uri: https://github.com/sky-sunkang/could-config.git
+          username: 183657170@qq.com
+  application:
+    name: could-config
+server:
+  port: 8080
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:kang@localhost:7001/eureka
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    instance-id: config8080 #实例名
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 30 #心跳时间
+    lease-expiration-duration-in-seconds: 90 #发呆时间
