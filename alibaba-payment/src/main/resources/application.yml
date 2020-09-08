@@ -1,12 +1,5 @@
 server:
   port: 8011
-spring:
-  application:
-    name: alibaba-payment
-  cloud:
-    nacos:
-      discovery:
-        server-addr: localhost:8848
 management:
   endpoint:
     web:
