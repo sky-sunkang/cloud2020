@@ -1,4 +1,4 @@
-package com.sunkang.alibabapayment;
+package com.sunkang.alibabapayment.controller;
 
 import cn.hutool.core.util.StrUtil;
 import org.springframework.beans.factory.annotation.Value;

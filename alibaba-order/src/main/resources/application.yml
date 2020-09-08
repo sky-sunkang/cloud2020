@@ -1,13 +1,5 @@
 server:
   port: 8001
-spring:
-  application:
-    name: alibaba-order
-  cloud:
-    #    注册中心
-    nacos:
-      discovery:
-        server-addr: localhost:8848
 payment:
   addr: http://alibaba-payment
 
