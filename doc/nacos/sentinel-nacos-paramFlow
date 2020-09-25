@@ -1,0 +1,12 @@
+[{
+	"resource": "currentLimitAggs",
+	"limitApp": "default",
+	"grade": 1,
+	"paramIdx": 0,
+	"count": 2.0,
+	"paramFlowItemList": [{
+		"object": "1",
+		"count": 200,
+		"classType": "java.lang.String"
+	}]
+}]

@@ -18,7 +18,12 @@ public class AlibabaOrderApplication {
 
     public static void main(String[] args) {
         try {
-            // 如果nacos没启动，县启动nacos服务，生产注释
+            // 启动sentinel服务
+            if (!isPortUsing("127.0.0.1", 8849)) {
+                Runtime.getRuntime().exec("cmd /k start java -Dserver.port=8849 -Dcsp.sentinel.dashboard.server=localhost:8849 -Dproject.name=sentinel-dashboard -jar C:\\Users\\kang\\Desktop\\server-start\\sentinel-dashboard.jar");
+            }
+
+            // 启动nacos服务
             if (!isPortUsing("127.0.0.1", 8848)) {
                 Runtime.getRuntime().exec("cmd /k start  C:\\Users\\kang\\Desktop\\server-start\\nacos-server-1.3.2\\bin\\startup.cmd -m standalone");
                 Thread.sleep(30000);

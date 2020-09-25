@@ -1,0 +1,18 @@
+[{
+    "resource": "/degradeRt",
+    "limitApp": "default",
+    "count": 200.0,
+    "timeWindow": 1,
+    "grade": 0,
+    "gmtCreate": null,
+    "gmtModified": null
+},
+{
+    "resource": "/degrade",
+    "limitApp": "default",
+    "count": 0.2,
+    "timeWindow": 1,
+    "grade": 1,
+    "gmtCreate": null,
+    "gmtModified": null
+}]

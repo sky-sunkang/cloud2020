@@ -20,13 +20,19 @@ public class PaymentController {
     @Value("${config.info}")
     private String configInfo;
 
-    @GetMapping(value = "/peyment/{id}")
-    public String peyment(@PathVariable(value = "id") Long id) {
+    @GetMapping(value = "/payment/{id}")
+    public String payment(@PathVariable(value = "id") Long id) {
         return StrUtil.format("alibaba payment port:{} id:{}", port, id);
     }
 
     @GetMapping(value = "/configInfo")
     public String configInfo(){
         return this.configInfo;
+    }
+
+
+    @GetMapping(value = "/currentLimit")
+    public String limit(){
+        return "我是测试限流方法服务 O(∩_∩)O哈哈~";
     }
 }

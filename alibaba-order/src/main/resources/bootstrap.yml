@@ -4,13 +4,14 @@ spring:
   profiles:
     active: dev
   cloud:
-    #    注册中心
     nacos:
+      # 注册中心
       discovery:
         # nacos地址
         server-addr: localhost:8848
         namespace: ${spring.profiles.active}
         group: da
+      #配置中心
       config: # 在命名空间dev下创建组为da的文件alibaba-order.yaml
         #后缀
         file-extension: yaml
@@ -20,3 +21,47 @@ spring:
         namespace: ${spring.profiles.active}
         #组，区分项目da rams
         group: da
+    #限流熔断
+    sentinel:
+      transport:
+        dashboard: localhost:8849
+        #与控制台交互端口 建议不配置 sentinel会自动去寻找合适的端口 默认为8719
+        #port: 8720
+      ##是否提前触发 Sentinel 初始化 默认值false
+      eager: true
+      datasource:
+        flow: ## 限流
+          nacos:
+            server-addr: ${spring.cloud.nacos.discovery.server-addr}
+            dataId: sentinel-nacos-flow
+            groupId: da
+            namespace: ${spring.profiles.active}
+            ruleType: flow
+        paramFlow: ##热点限流
+           nacos:
+              server-addr: ${spring.cloud.nacos.discovery.server-addr}
+              dataId: sentinel-nacos-paramFlow
+              groupId: da
+              namespace: ${spring.profiles.active}
+              ruleType: param-flow
+        degrade: ## 降级
+          nacos:
+            server-addr: ${spring.cloud.nacos.discovery.server-addr}
+            dataId: sentinel-nacos-degrade
+            groupId: da
+            namespace: ${spring.profiles.active}
+            ruleType: degrade
+        system: ## 系统规则
+          nacos:
+            server-addr: ${spring.cloud.nacos.discovery.server-addr}
+            dataId: sentinel-nacos-system
+            groupId: da
+            namespace: ${spring.profiles.active}
+            ruleType: system
+        authority: ## 黑白名单
+          nacos:
+            server-addr: ${spring.cloud.nacos.discovery.server-addr}
+            dataId: sentinel-nacos-authority
+            groupId: da
+            namespace: ${spring.profiles.active}
+            ruleType: authority

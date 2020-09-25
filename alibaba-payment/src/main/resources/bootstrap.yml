@@ -11,6 +11,7 @@ spring:
         server-addr: localhost:8848
         namespace: ${spring.profiles.active}
         group: da
+      #配置中心
       config: # 在命名空间dev下创建组为da的文件alibaba-payment.yaml
         #后缀
         file-extension: yaml
@@ -20,3 +21,8 @@ spring:
         namespace: ${spring.profiles.active}
         #组，区分项目da rams
         group: da
+    #限流熔断
+    sentinel:
+      transport:
+#        port: 8720
+        dashboard: localhost:8849
